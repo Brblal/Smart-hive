@@ -1,0 +1,53 @@
+.container {
+    position: relative;
+    width: 70%; /* Velikost oblasti kolem šestiúhelníků */
+    height: 50%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hexagon {
+    width: 100px;
+    height: 58px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Centrální šestiúhelník */
+.center {
+    background-color: #2ecc71;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Upravené rozmístění okolních šestiúhelníků */
+.hex1 { top: 10%; left: -10%; transform: translate(-50%, -50%); } /* Nad středem */
+.hex2 { top: 30%; left: 30%; transform: translate(-50%, -50%); } /* Levá horní strana */
+.hex3 { top: 70%; left: 30%; transform: translate(-50%, -50%); } /* Levá dolní strana */
+.hex4 { top: 90%; left: 50%; transform: translate(-50%, -50%); } /* Pod středem */
+.hex5 { top: 70%; left: 70%; transform: translate(-50%, -50%); } /* Pravá dolní strana */
+.hex6 { top: 30%; left: 70%; transform: translate(-50%, -50%); } /* Pravá horní strana */
+
+/* Aktivní stav */
+.container.active .surrounding {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.container.active .center {
+    transform: translate(-50%, -50%) scale(0.7);
+}
